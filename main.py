@@ -18,7 +18,7 @@ async def mainpart(message: types.Message):
         downloaded = InstagramDownloader(message.text)
         with open(downloaded[1][0], 'rb') as video:
                 with open(downloaded[0], "rb") as comment:
-                    await message.answer_video(video, caption=comment.read())
+                    await message.answer_video(video, caption=comment.read().decode("utf-8"))
     shutil.rmtree(downloaded[2])
 
 
