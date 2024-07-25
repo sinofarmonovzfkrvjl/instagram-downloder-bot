@@ -16,7 +16,8 @@ async def mainpart(message: types.Message):
     await message.answer("Video yuklanmoqda...")
     if message.text.startswith("https://www.instagram.com/") or message.text.startswith("https://instagram.com/"):
         downloaded = InstagramDownloader(message.text)
-        
+        with open(downloaded[1][0], 'rb') as video:
+            await message.answer_video(video)
     shutil.rmtree(downloaded[2])
 
 
