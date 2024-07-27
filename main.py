@@ -2,8 +2,9 @@ from aiogram import Bot, Dispatcher, executor, types
 import logging
 from downloader import InstagramDownloader
 import shutil
+from .token import TOKEN
 
-bot = Bot("5904607271:AAEDJWUULTrD3zV8HOY7JbU94aiXk5Qexno")
+bot = Bot(TOKEN)
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
