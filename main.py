@@ -1,10 +1,13 @@
 from aiogram import Bot, Dispatcher, executor, types
 import logging
-from downloader import InstagramDownloader
+from downloader import InstagramVideoDownloader
 import shutil
-from .token import TOKEN
+from dotenv import load_dotenv
+import os
 
-bot = Bot(TOKEN)
+load_dotenv()
+
+bot = Bot(os.getenv("TOKEN"))
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
@@ -16,7 +19,7 @@ async def mainpart(message: types.Message):
     global downloaded
     await message.answer("Video yuklanmoqda...")
     if message.text.startswith("https://www.instagram.com/") or message.text.startswith("https://instagram.com/"):
-        downloaded = InstagramDownloader(message.text)
+        downloaded = InstagramVideoDownloader(message.text)
         with open(downloaded[1][0], 'rb') as video:
                 with open(downloaded[0], "rb") as comment:
                     await message.answer_video(video, caption=comment.read().decode("utf-8"))
