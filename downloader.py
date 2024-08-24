@@ -18,7 +18,7 @@ def InstagramVideoDownloader(url):
 def InstagramStoryDownloader(url):
     L = instaloader.Instaloader()
 
-    story_url = 'https://www.instagram.com/stories/amerikadagi.ozbeklar/3421663456393706040?utm_source=ig_story_item_share&igsh=MWNhcHFveHFtODR4aA=='
+    story_url = ''
 
     # Extract the shortcode from the URL
     shortcode = re.search(r'instagram\.com/stories/[^/]+/([^/?]+)', story_url).group(1)
